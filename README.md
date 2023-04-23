@@ -8,7 +8,7 @@ The major intent of this repository is to compile all the projects that I do (in
 * It is a game made with Python and Pygame as the third test of the "Algoritmos I"' subject.
 * It's a platformer really inspired by the game "Hollow Knight".
 * I made the graphics and all the code alone...
-* I wanted to make my first programming project ever to by totally mine (childish? I agree)
+* I wanted to make my first programming project ever to be totally mine (childish? I agree)
 * I'm really thankful for the oportunity to make this.
 * The font "Gaeilge" is on public domain! I think it's pretty. Credits to father Padraig McCarthy.
 
