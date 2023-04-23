@@ -102,7 +102,7 @@ class Store {
         int total = 0;
 
         for (Seller s: this.sellers) {
-            total += s.totalSells(this.products);
+            total += s.totalValueSells(this.products);
         }
 
         return total;
@@ -112,7 +112,7 @@ class Store {
         int total = 0;
 
         for (Seller s: this.sellers) {
-            total += s.totalStock(this.products);
+            total += s.totalQtdSells(this.products);
         }
 
         return total;

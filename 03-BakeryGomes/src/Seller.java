@@ -47,7 +47,7 @@ class Seller {
         this.sells.put(p, amount);
     }
 
-    public int totalSells(ArrayList<Product> prods){
+    public int totalValueSells(ArrayList<Product> prods){
         int total = 0;
 
         for (Product p: prods) {
@@ -59,7 +59,7 @@ class Seller {
         return total;
     }
 
-    public int totalStock(ArrayList<Product> prods){
+    public int totalQtdSells(ArrayList<Product> prods){
         int total = 0;
 
         for (Product p: prods) {
@@ -76,7 +76,7 @@ class Seller {
             if (this.sells.containsKey(p)) {
                 Formatter.printNtimes('-', 60, true);
                 System.out.println(p.getName() + " - " + p.getDescription() + " - " + "Vendas totais do produto: " + this.sells.get(p));
-                System.out.println("Vendas totais: " + "R$" + this.totalSells(prods) + " - " + this.totalStock(prods));
+                System.out.println("Vendas totais: " + "R$" + this.totalValueSells(prods) + " - " + this.totalQtdSells(prods));
                 Formatter.printNtimes('-', 60, true);
             }
         }

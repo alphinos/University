@@ -18,7 +18,7 @@ The major intent of this repository is to compile all the projects that I do (in
 * The original problem is: you have a museum that is represented by a square matrix.
 * Each row of the matrix represents a room and each column represents a connection between the row and the other room of the museum.
 * Because of the starter proposition, the matrix must be symmetrical to represent the problem properly
-* Basically, the algorithm picks the room with the most connection to other rooms and puts a camera on the room
+* Basically, the algorithm picks the room with the most connections to other rooms and puts a camera on the room
 * It was really fun to do... I didn't know, but I would join a research project with the professor of the subject
 
 - [ ] **Cofo: learning data structures!** :green_circle:
@@ -26,7 +26,7 @@ The major intent of this repository is to compile all the projects that I do (in
 * Basically, a cofo is bag where you can put many thing.
 * There will be different implementations of the "cofo" idea in C for the "Estruturas de Dados I"'s subject.
 * The first implementation of this is basically an integer array.
-* It has function to create the cofo, destroy it, insert something on it, remove something and find a specific element on it.
+* It has functions to create the cofo, destroy it, insert something on it, remove something and find a specific element on it.
 
 - [ ] **Bakery Gomes: Object Oriented Programming** :green_circle:
 * The first project that involves java for the "Linguagens de Programação II"'s subject.
