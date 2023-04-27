@@ -7,6 +7,5 @@
 
 - No linux, basta digitiar "./main" no terminal e executar
 
-- Quanto à implementação, eu queria fazer uma função que imprimisse na tela o vetor do cofo
-Para isso, tive que mover a struct do cofo.c para o cofo.h, espero que não seja muito problemático
+- Quanto à implementação, eu fiz uma função que remove um elemento diretamente pela posição dentro do cofo.
 O trabalho foi bem divertido de fazer :D
