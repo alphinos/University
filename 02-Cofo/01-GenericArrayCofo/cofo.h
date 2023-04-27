@@ -1,6 +1,9 @@
 #ifndef _GCOFO_H_
 #define _GCOFO_H_
 
+#define TRUE 1
+#define FALSE 0
+
 typedef struct _gcofo_{
     int numItems;
     int maxItems;
@@ -11,9 +14,10 @@ typedef struct _gcofo_{
 gCofo *gCofCreate(int max_items);
 int gCofInsert(gCofo *cofo, void* item);
 void* gCofRemove(gCofo *cofo, void* key, int (*cmp)(void*, void*));
+void* gCofRemoveByIndex(gCofo *cofo, int i);
 void* gCofQuery(gCofo *cofo, void* key, int (*cmp)(void*, void*));
 void* gCofGetFirst(gCofo *cofo);
 void* gCofGetNext(gCofo *cofo);
-int cofDestroy(gCofo *cofo);
+int gCofDestroy(gCofo *cofo);
 
 #endif

@@ -3,9 +3,6 @@
 #ifndef _COFO_C_
 #define _COFO_C_
 
-#define TRUE 1
-#define FALSE 0
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "cofo.h"
@@ -19,13 +16,19 @@ gCofo *gCofCreate(int max_items){
         free(gcofo);
         return NULL;
     }
+    gcofo->items = (void* *)malloc(sizeof(void*)*max_items);
+    if (gcofo == NULL){
+        free(gcofo);
+        return NULL;
+    }
+
     gcofo->numItems = 0;
     gcofo->maxItems = max_items;
     gcofo->curr = -1;
     return gcofo;
 }
 
-int cofDestroy(gCofo *cofo){
+int gCofDestroy(gCofo *cofo){
     if (cofo == NULL)
         return FALSE;
     if (cofo->numItems != 0)
@@ -38,11 +41,11 @@ int cofDestroy(gCofo *cofo){
 int gCofInsert(gCofo *cofo, void* item){
     if (cofo == NULL)
         return FALSE;
-    if (cofo->numItems >= cofo->maxItems)
-        return FALSE;
-    cofo->items[cofo->numItems] = item;
-    cofo->numItems++;
-    return TRUE;
+    if (cofo->numItems < cofo->maxItems)
+        cofo->items[cofo->numItems] = item;
+        cofo->numItems++;
+        return TRUE;
+    return FALSE;
 }
 
 void* gCofGetFirst(gCofo *cofo){
@@ -60,7 +63,7 @@ void* gCofGetNext(gCofo *cofo){
     void* elm;
     if (cofo == NULL)
         return NULL;
-    if (cofo->numItems <= 0 || cofo->curr >= cofo->numItems - 1)
+    if (cofo->numItems <= 0 || cofo->curr > cofo->numItems - 1)
         return NULL;
     cofo->curr++;
     elm = cofo->items[cofo->curr];
@@ -81,6 +84,7 @@ void* gCofQuery(gCofo *cofo, void* key, int (*cmp)(void*, void*)){
     }
     if (stat == TRUE)
         return cofo->items[i];
+    return FALSE;
 }
 
 void* gCofRemove(gCofo *cofo, void* key, int (*cmp)(void*, void*)){
@@ -105,6 +109,23 @@ void* gCofRemove(gCofo *cofo, void* key, int (*cmp)(void*, void*)){
         cofo->numItems--;
         return data;
     }
+    return NULL;
+}
+
+void* gCofRemoveByIndex(gCofo *cofo, int i){
+    if (cofo == NULL)
+        return NULL;
+    if (cofo->numItems <= 0)
+        return NULL;
+    if (i >= cofo->numItems)
+        return NULL;
+    void* data;
+    data = cofo->items[i];
+    for(int j = i; j < cofo->numItems; j++){
+        cofo->items[j] = cofo->items[j + 1];
+    }
+    cofo->numItems--;
+    return data;
 }
 
 #endif
