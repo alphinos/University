@@ -1,3 +1,5 @@
+//Carlos Eduardo Veras Gomes - 3º período 
+
 #ifndef _GCOFO_H_
 #define _GCOFO_H_
 

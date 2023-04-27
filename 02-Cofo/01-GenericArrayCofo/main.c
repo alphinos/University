@@ -1,3 +1,5 @@
+//Carlos Eduardo Veras Gomes - 3º período 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
