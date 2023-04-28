@@ -18,61 +18,25 @@ int getUserInput(int *answer){
     while(getchar() != '\n');
 }
 
-int cmpInt(void* n1, void* n2){
-    int *in1, *in2;
-    in1 = (int*)n1;
-    in2 = (int*)n2;
-    if (*in1 < *in2)
-        return -1;
-    else if (*in1 > *in2)
+int findByName( void* item, void* key ){
+    Product* temp = (Product*)item;
+    if (strcmp(temp->name, (char *)key) == FALSE)
         return TRUE;
-    else
-        return FALSE;
+    return FALSE;
 }
 
-float cmpFloat(void* n1, void* n2){
-    float *in1, *in2;
-    in1 = (float*)n1;
-    in2 = (float*)n2;
-    if (*in1 < *in2)
-        return -1;
-    else if (*in1 > *in2)
+int findByID( void* item, void* key ){
+    Product* temp = (Product*)item;
+    if ( temp->id == *(int*)key )
         return TRUE;
-    else
-        return FALSE;
+    return FALSE;
 }
 
-int findByName(void *item, void *key){
-    Product *prod;
-    char *keyName;
-    prod = (Product *)item;
-    keyName = (char *)key;
-    if (strcmp(prod->name, keyName))
+int findByPrice( void* item, void* key ){
+    Product* temp = (Product*)item;
+    if ( temp->price == *(float*)key )
         return TRUE;
-    else
-        return FALSE;
-}
-
-int findByID(void *item, void *key){
-    Product *prod;
-    int *keyID;
-    prod = (Product *)item;
-    keyID = (int *)key;
-    if (prod->id == *keyID)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-int findByPrice(void *item, void *key){
-    Product *prod;
-    float *keyPrice;
-    prod = (Product *)item;
-    keyPrice = (float *)key;
-    if (prod->price == *keyPrice)
-        return TRUE;
-    else
-        return FALSE;
+    return FALSE;
 }
 
 void main(void){
@@ -177,19 +141,19 @@ void main(void){
                 getUserInput(&answer);
                 switch (answer){
                     case 1:
-                        scanf("%s", &name);
+                        scanf("%s", name);
                         while(getchar() != '\n');
-                        product = (Product *)gCofRemove(cofo, name, &findByName);
+                        product = (Product *)gCofRemove(cofo, (void*)name, &findByName);
                         break;
                     case 2:
                         scanf("%s", &id);
                         while(getchar() != '\n');
-                        product = (Product *)gCofRemove(cofo, name, &findByID);
+                        product = (Product *)gCofRemove(cofo, (void*)&id, &findByID);
                         break;
                     case 3:
                         scanf("%s", &price);
                         while(getchar() != '\n');
-                        product = (Product *)gCofRemove(cofo, name, &findByPrice);
+                        product = (Product *)gCofRemove(cofo, (void*)&price, &findByPrice);
                         break;
                     default:
                         printf("--------------------------------------------------------------\n");
@@ -222,19 +186,19 @@ void main(void){
                 getUserInput(&answer);
                 switch (answer){
                     case 1:
-                        scanf("%s", &name);
+                        scanf("%s", name);
                         while(getchar() != '\n');
-                        product = (Product *)gCofQuery(cofo, name, &findByName);
+                        product = (Product *)gCofQuery(cofo, (void*)name, &findByName);
                         break;
                     case 2:
                         scanf("%s", &id);
                         while(getchar() != '\n');
-                        product = (Product *)gCofQuery(cofo, name, &findByID);
+                        product = (Product *)gCofQuery(cofo, (void*)&id, &findByID);
                         break;
                     case 3:
                         scanf("%s", &price);
                         while(getchar() != '\n');
-                        product = (Product *)gCofQuery(cofo, name, &findByPrice);
+                        product = (Product *)gCofQuery(cofo, (void*)&price, &findByPrice);
                         break;
                     default:
                         printf("--------------------------------------------------------------\n");
@@ -243,7 +207,7 @@ void main(void){
                 }
 
                 printf("--------------------------------------------------------------\n");
-                printf("- Produto removido: %s ---------------------------------------\n",
+                printf("- Produto: %s ---------------------------------------\n",
                     product->name);
                 printf("- Estoque: %d ------------------------------------------------\n",
                     product->amtStock);

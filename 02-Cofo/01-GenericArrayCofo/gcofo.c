@@ -76,16 +76,13 @@ void* gCofQuery(gCofo *cofo, void* key, int (*cmp)(void*, void*)){
         return NULL;
     if (cofo->numItems <= 0)
         return NULL;
-    int i, data, stat;
-    i = 0;
-    stat = cmp(cofo->items[i], key);
-    while ( i < cofo->numItems && stat != TRUE ){
-        i++;
-        stat = cmp(cofo->items[i], key);
+
+    for (int i = 0; i < cofo->numItems; i++){
+        if (cmp(cofo->items[i], key) == TRUE)
+            return cofo->items[i];
     }
-    if (stat == TRUE)
-        return cofo->items[i];
-    return FALSE;
+
+    return NULL;
 }
 
 void* gCofRemove(gCofo *cofo, void* key, int (*cmp)(void*, void*)){
