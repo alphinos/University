@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "cofo.h"
+#include "gcofo.h"
 
 typedef struct _Product_{
     char name[30];
@@ -80,15 +80,11 @@ void main(void){
     Product *product;
 
     int answer = -1;
-
-    void* aux;
-    int flagAux;
+    int flagAux = -1;
 
     char name[30];
     float price;
     int id;
-
-    char end;
 
     do {
         printf("--------------------------------------------------------------\n");
@@ -105,6 +101,13 @@ void main(void){
         getUserInput(&answer);
         switch(answer){
             case 0:
+                flagAux = TRUE;
+                if (cofo != NULL)
+                    flagAux = FALSE;
+                while(flagAux != TRUE){
+                    gCofEmpty(cofo);
+                    flagAux = gCofDestroy(cofo);
+                }
                 printf("--------------------------------------------------------------\n");
                 printf("----------------------- Tchau tchau :( -----------------------\n");
                 printf("--------------------------------------------------------------\n");
@@ -257,29 +260,19 @@ void main(void){
                 printf("Os elementos da coleção são:\n");
 
                 product = (Product*)gCofGetFirst(cofo);
-                printf("--------------------------------------------------------------\n");
-                printf("- Produto removido: %s ---------------------------------------\n",
-                    product->name);
-                printf("- Estoque: %d ------------------------------------------------\n",
-                    product->amtStock);
-                printf("- Id: %d      ------------------------------------------------\n",
-                    product->id);
-                printf("- Preço: %.2f   ------------------------------------------------\n",
-                    product->price);
-                printf("--------------------------------------------------------------\n");
 
-                while (gCofGetNext(cofo) != NULL){
-                    product = (Product*)cofo->items[cofo->curr];
+                while(product != NULL){
                     printf("--------------------------------------------------------------\n");
-                    printf("- Produto removido: %s ---------------------------------------\n",
+                    printf("- Produto: %s          ----------------------------------------\n",
                         product->name);
-                    printf("- Estoque: %d ------------------------------------------------\n",
+                    printf("- Estoque: %d          ----------------------------------------\n",
                         product->amtStock);
-                    printf("- Id: %d      ------------------------------------------------\n",
+                    printf("- Id: %d               ----------------------------------------\n",
                         product->id);
-                    printf("- Preço: %.2f   ----------------------------------------------\n",
+                    printf("- Preço: %.2f          ---------------------------------------\n",
                         product->price);
                     printf("--------------------------------------------------------------\n");
+                    product = gCofGetNext(cofo);
                 }
                 break;
             case 6:
@@ -287,13 +280,8 @@ void main(void){
                 printf("--- O cofo será esvaziado! -----------------------------------\n");
                 printf("--------------------------------------------------------------\n");
                 int i = 0;
-                for (i = cofo->numItems - 1; i >= 0; i--){
-                    flagAux = i;
-                    product = gCofRemoveByIndex(cofo, i);
-                    if (product == NULL)
-                        i = flagAux;
-                }
-                if (cofo->numItems != 0){
+                flagAux = gCofEmpty(cofo);
+                if (flagAux != 0){
                     printf("--------------------------------------------------------------\n");
                     printf("--- Não foi possível esvaziar o cofo! ------------------------\n");
                     printf("--------------------------------------------------------------\n");

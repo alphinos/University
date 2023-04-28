@@ -1,11 +1,13 @@
 // Discente: Carlos Eduardo Veras Gomes
 
-#ifndef _COFO_C_
-#define _COFO_C_
+#ifndef _GCOFO_C_
+#define _GCOFO_C_
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "cofo.h"
+#include "gcofo.h"
+
+
 
 gCofo *gCofCreate(int max_items){
     if (max_items <= 0)
@@ -21,7 +23,6 @@ gCofo *gCofCreate(int max_items){
         free(gcofo);
         return NULL;
     }
-
     gcofo->numItems = 0;
     gcofo->maxItems = max_items;
     gcofo->curr = -1;
@@ -60,14 +61,14 @@ void* gCofGetFirst(gCofo *cofo){
 }
 
 void* gCofGetNext(gCofo *cofo){
-    void* elm;
     if (cofo == NULL)
         return NULL;
-    if (cofo->numItems <= 0 || cofo->curr > cofo->numItems - 1)
+    if (cofo->numItems <= 0)
         return NULL;
     cofo->curr++;
-    elm = cofo->items[cofo->curr];
-    return elm;
+    if (cofo->curr < cofo->numItems)
+        return cofo->items[cofo->curr];
+    return NULL;
 }
 
 void* gCofQuery(gCofo *cofo, void* key, int (*cmp)(void*, void*)){
@@ -126,6 +127,22 @@ void* gCofRemoveByIndex(gCofo *cofo, int i){
     }
     cofo->numItems--;
     return data;
+}
+
+int gCofEmpty(gCofo *cofo){
+    if (cofo == NULL)
+        return -1;
+
+    int aux = 0;
+    void* elm;
+
+    for (int i = cofo->numItems - 1; i >= 0; i--){
+        aux = i;
+        elm = gCofRemoveByIndex(cofo, i);
+        if (elm == NULL)
+            return -1;
+    }
+    return cofo->numItems;
 }
 
 #endif
