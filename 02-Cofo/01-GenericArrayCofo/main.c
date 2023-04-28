@@ -47,8 +47,8 @@ void main(void){
     int flagAux = -1;
 
     char name[30];
-    float price;
     int id;
+    float price;
 
     do {
         printf("--------------------------------------------------------------\n");
@@ -146,12 +146,12 @@ void main(void){
                         product = (Product *)gCofRemove(cofo, (void*)name, &findByName);
                         break;
                     case 2:
-                        scanf("%s", &id);
+                        scanf("%d", &id);
                         while(getchar() != '\n');
                         product = (Product *)gCofRemove(cofo, (void*)&id, &findByID);
                         break;
                     case 3:
-                        scanf("%s", &price);
+                        scanf("%f", &price);
                         while(getchar() != '\n');
                         product = (Product *)gCofRemove(cofo, (void*)&price, &findByPrice);
                         break;
@@ -160,6 +160,14 @@ void main(void){
                         printf("---- Busca por dado inválido! --------------------------------\n");
                         printf("--------------------------------------------------------------\n");
                 }
+
+                if (product == NULL){
+                    printf("--------------------------------------------------------------\n");
+                    printf("---- O produto não foi encontrado... -------------------------\n");
+                    printf("--------------------------------------------------------------\n");
+                    break;
+                }
+
                 printf("--------------------------------------------------------------\n");
                 printf("- Produto removido: %s ---------------------------------------\n",
                     product->name);
@@ -191,12 +199,12 @@ void main(void){
                         product = (Product *)gCofQuery(cofo, (void*)name, &findByName);
                         break;
                     case 2:
-                        scanf("%s", &id);
+                        scanf("%d", &id);
                         while(getchar() != '\n');
                         product = (Product *)gCofQuery(cofo, (void*)&id, &findByID);
                         break;
                     case 3:
-                        scanf("%s", &price);
+                        scanf("%f", &price);
                         while(getchar() != '\n');
                         product = (Product *)gCofQuery(cofo, (void*)&price, &findByPrice);
                         break;

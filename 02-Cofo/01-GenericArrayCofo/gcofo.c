@@ -7,8 +7,6 @@
 #include <stdlib.h>
 #include "gcofo.h"
 
-
-
 gCofo *gCofCreate(int max_items){
     if (max_items <= 0)
         return NULL;
@@ -90,23 +88,27 @@ void* gCofRemove(gCofo *cofo, void* key, int (*cmp)(void*, void*)){
         return NULL;
     if (cofo->numItems <= 0)
         return NULL;
-    int i;
+
+    int i, j;
     void* data;
-    int stat;
-    i = 0;
-    stat = cmp(key, cofo->items[i]);
-    while(i < cofo->numItems && stat != TRUE){
-        i++;
-        stat = cmp(key, cofo->items[i]);
+    int status;
+
+    for ( i = 0; i < cofo->numItems; i++){
+        if ( cmp(cofo->items[i], key) == TRUE){
+            status = TRUE;
+            break;
+        }
     }
-    if (stat == TRUE){
+
+    if (status == TRUE){
         data = cofo->items[i];
-        for(int j = i; j < cofo->numItems; j++){
+        for (j = i; j < cofo->numItems -1; j++){
             cofo->items[j] = cofo->items[j + 1];
         }
         cofo->numItems--;
         return data;
     }
+
     return NULL;
 }
 
