@@ -62,4 +62,26 @@ void *stkPop(Stack *stack){
     return aux;
 }
 
+void *stkTop(Stack *stack){
+    void *aux;
+    if (stack == NULL){
+        return NULL;
+    }
+    if (stack->top < 0){
+        return NULL;
+    }
+    aux = stack->items[stack->top];
+    return aux;
+}
+
+int isStkEmpty(Stack *stack){
+    if (stack == NULL){
+        return FALSE;
+    }
+    if (stack->top >= 0 ){
+        return FALSE;
+    }
+    return TRUE;
+}
+
 #endif
