@@ -1,5 +1,3 @@
-//Carlos Eduardo Veras Gomes - 3º período 
-
 #ifndef _STACK_H_
 #define _STACK_H_
 

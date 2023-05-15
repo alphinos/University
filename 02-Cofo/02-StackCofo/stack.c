@@ -27,10 +27,10 @@ Stack *stkCreate(int max){
 
 int stkDestroy( Stack *stack ){
     if ( stack == NULL){
-        return NULL;
+        return FALSE;
     }
     if ( stack->top >= 0 ){
-        return NULL;
+        return FALSE;
     }
     free(stack->items);
     free(stack);
