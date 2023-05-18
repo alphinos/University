@@ -103,8 +103,8 @@ int fcprint( char string[], int alignment, char color[], int jump, int sizeTxt )
     int ctt = 0;
     if ( sizeTxt != 0 ){
         ctt = sizeTxt - line->mainLength + 1;
-        if (ctt == 4){
-            ctt = 5;
+        if (ctt == 6){
+            ctt = 7;
         }
 
         for (int i = 0; i < ctt; i++){
