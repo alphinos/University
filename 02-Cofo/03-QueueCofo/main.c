@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack.h"
+#include "queue.h"
 #include "IO.h"
 #include <string.h>
 
@@ -9,29 +9,31 @@ int getUserInput(int *answer){
     while(getchar() != '\n');
 }
 
+// I'm assuming that only integers are on the 
 void main(void){
-    Stack *stack;
-    int intElm;
-    char charElm;
-    float floatElm;
+    Queue *queue;
+    void *temp;
+    int *intElm;
+    char *charElm;
+    float *floatElm;
 
     int answer;
     int flagAux = -1;
-    int menuTxt = 33;
+    int menuTxt = 37;
 
-    char stdColor[] = YELLOW;
-    int format = 2;
+    char stdColor[] = GREEN;
+    int format = 0;
     int jump = 1;
 
     do {
         colorPrintNTimes('-', ROW_LEN, jump, stdColor);
         fcprint("[0] - Sair do programa!", format, stdColor, jump, menuTxt);
-        fcprint("[1] - Criar pilha!", format, stdColor, jump, menuTxt);
-        fcprint("[2] - Inserir na pilha!", format, stdColor, jump, menuTxt);
-        fcprint("[3] - Remover  do topo da pilha!", format, stdColor, jump, menuTxt);
-        fcprint("[4] - Qual o elemento do topo?", format, stdColor, jump, menuTxt);
-        fcprint("[5] - A pilha está vazia?", format, stdColor, jump, menuTxt);
-        fcprint("[6] - Destruir pilha!", format, stdColor, jump, menuTxt);
+        fcprint("[1] - Criar fila!", format, stdColor, jump, menuTxt);
+        fcprint("[2] - Inserir na fila!", format, stdColor, jump, menuTxt);
+        fcprint("[3] - Remover  do início da fila!", format, stdColor, jump, menuTxt);
+        fcprint("[4] - Qual o elemento da frente?", format, stdColor, jump, menuTxt);
+        fcprint("[5] - A fila está vazia?", format, stdColor, jump, menuTxt);
+        fcprint("[6] - Destruir fila!", format, stdColor, jump, menuTxt);
         colorPrintNTimes('-', ROW_LEN, jump, stdColor);
 
         printf("%s--- Resposta: ", stdColor);
@@ -46,12 +48,12 @@ void main(void){
                 break;
             case 1:
                 colorPrintNTimes('-', ROW_LEN, jump, stdColor);
-                fcprint("Quantos elementos queres que caibam na pilha?", format, stdColor, jump, 46);
+                fcprint("Quantos elementos queres que caibam na fila?", format, stdColor, jump, 46);
                 printf("%s--- Resposta: ", stdColor);
                 answer = -1;
                 getUserInput(&answer);
                 printf("%s", COLOR_RESET);
-                stack = stkCreate(answer);
+                queue = qCreate(answer);
                 colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                 break;
             case 2:
@@ -66,18 +68,18 @@ void main(void){
                 getUserInput(&answer);
                 switch (answer){
                     case 0:
-                        getUserInput(&intElm);
-                        stkPush((void*)&intElm, stack);
+                        getUserInput(intElm);
+                        qEnQueue((void*)&intElm, queue);
                         break;
                     case 1:
                         scanf("%c", charElm);
                         while(getchar() != '\n');
-                        stkPush((void*)&charElm, stack);
+                        qEnQueue((void*)&charElm, queue);
                         break;
                     case 2:
                         scanf("%f", floatElm);
                         while(getchar() != '\n');
-                        stkPush((void*)&floatElm, stack);
+                        qEnQueue((void*)&floatElm, queue);
                         break;
                 }
                 printf("%s", COLOR_RESET);
@@ -85,30 +87,30 @@ void main(void){
                 break;
             case 3:
                 colorPrintNTimes('-', ROW_LEN, jump, stdColor);
-                fcprint("Removendo o topo da pilha!", format, stdColor, jump, 46);
-                answer = *(int *)stkPop(stack);
+                fcprint("Removendo o primeiro da fila!", format, stdColor, jump, 46);
+                answer = *(int *)qDeQueue(queue);
                 printf("%s--- Item removido: ", stdColor);
                 printf("%d |||||\n", answer);
                 printf("%s", COLOR_RESET);
                 colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                 break;
             case 4:
-                answer = *(int *)stkTop(stack);
-                if (stkTop(stack) != NULL){
+                intElm = (int *)qFirst(queue);
+                if (intElm != NULL){
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                     printf("%s--- Resposta: ", stdColor);
-                    printf("- %d |||||\n", answer);
+                    printf("- %d |||||\n", *intElm);
                     printf("%s", COLOR_RESET);
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                 } else {
                     colorPrintNTimes('-', ROW_LEN, jump, RED);
-                    fcprint("Não foi possível retornar o valor do topo", format, stdColor, jump, 46);
+                    fcprint("Não foi possível retornar o valor da frente", format, stdColor, jump, 46);
                     colorPrintNTimes('-', ROW_LEN, jump, RED);
 
                 }
                 break;
             case 5:
-                if (isStkEmpty(stack) == TRUE){
+                if (qIsEmpty(queue) == TRUE){
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                     fcprint("Está vazia!", format, stdColor, jump, 46);
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
@@ -119,11 +121,12 @@ void main(void){
                 }
                 break;
             case 6:
-                if (isStkEmpty(stack) == TRUE){
+                if (qIsEmpty(queue) == FALSE){
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
-                    fcprint("Esvaziando pilha...", format, stdColor, jump, 0);
-                    while (stkPop(stack) != NULL );
+                    fcprint("Esvaziando fila...", format, stdColor, jump, 0);
+                    while (qDeQueue(queue) != NULL );
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
+                    qDestroy(queue);
                 } else {
                     colorPrintNTimes('-', ROW_LEN, jump, RED);
                     fcprint("Tchau Tchau :(", format, RED, jump, 0);
