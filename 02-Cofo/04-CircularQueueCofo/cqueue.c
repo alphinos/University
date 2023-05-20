@@ -87,25 +87,55 @@ int isQcEmpy( CQueue *queue ){
         return FALSE;
 }
 
-int cqPromoteLast( CQueue *queue, int n ){
+int qcPromoteLast( CQueue *queue, int n ){
     if (queue == NULL)
         return FALSE;
     if (n <= 0 )
         return FALSE;
-    if (queue->rear <= 0)
-        return FALSE;
     
     void *data;
     data = queue->items[queue->rear];
-    int moves, i, j;
-    if ( n < queue->rear )
-        moves = n;
-    else
-        moves = queue->rear;
+    int i, j, prev_j;
+    
+    if (queue->nElms <= n){
+        queue->front = circDec(queue->front, queue->maxItems);
+        queue->items[queue->front] = data;
+        queue->rear = circDec(queue->rear, queue->maxItems);
+        return TRUE;
+    }
+
     j = queue->rear;
-    for (i = moves; i > 0; i--){
-        queue->items[j] = queue->items[j - 1];
-        j--;
+    for (i = 0; i < n; i++){
+        prev_j = circDec(j, queue->maxItems);
+        queue->items[j] = queue->items[prev_j];
+        j = prev_j;
+    }
+    queue->items[j] = data;
+    return TRUE;
+}
+
+int qcPunishFirst( CQueue *queue, int n ){
+    if (queue == NULL)
+        return FALSE;
+    if (n <= 0)
+        return FALSE;
+    
+    void *data;
+    data = queue->items[queue->front];
+    int i, j, next_j;
+
+    if (queue->nElms <= n){
+        queue->rear = circInc(queue->rear, queue->maxItems);
+        queue->items[queue->rear] = data;
+        queue->front = circInc(queue->front, queue->maxItems);
+        return TRUE;
+    }
+
+    j = queue->front;
+    for (i = 0; i < n; i++){
+        next_j = circInc(j, queue->maxItems);
+        queue->items[j] = queue->items[next_j];
+        j = next_j;
     }
     queue->items[j] = data;
     return TRUE;

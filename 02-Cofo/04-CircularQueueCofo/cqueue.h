@@ -23,7 +23,8 @@ int qcDeQueue( CQueue *queue );
 void *qcFirst( CQueue *queue );
 int qcDestroy( CQueue *queue );
 int isQcEmpy( CQueue *queue );
-int cqPromoteLast( CQueue *queue, int n );
+int qcPromoteLast( CQueue *queue, int n );
+int qcPunishFirst( CQueue *queue, int n );
 
 #else
 
@@ -34,7 +35,8 @@ extern int qcDeQueue( CQueue *queue );
 extern void *qcFirst( CQueue *queue );
 extern int qcDestroy( CQueue *queue );
 extern int isQcEmpy( CQueue *queue );
-extern int cqPromoteLast( CQueue *queue, int n );
+extern int qcPromoteLast( CQueue *queue, int n );
+extern int qcPunishFirst( CQueue *queue, int n );
 
 #endif
 #endif

@@ -11,7 +11,7 @@ int getUserInput(int *answer){
 
 // I'm assuming that only integers are on the 
 void main(void){
-    Queue *queue;
+    CQueue *cqueue;
     void *temp;
     int *intElm;
     char *charElm;
@@ -53,7 +53,7 @@ void main(void){
                 answer = -1;
                 getUserInput(&answer);
                 printf("%s", COLOR_RESET);
-                queue = qCreate(answer);
+                cqueue = qcCreate(answer);
                 colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                 break;
             case 2:
@@ -69,17 +69,17 @@ void main(void){
                 switch (answer){
                     case 0:
                         getUserInput(intElm);
-                        qEnQueue((void*)&intElm, queue);
+                        qcEnQueue((void*)&intElm, cqueue);
                         break;
                     case 1:
                         scanf("%c", charElm);
                         while(getchar() != '\n');
-                        qEnQueue((void*)&charElm, queue);
+                        qcEnQueue((void*)&charElm, cqueue);
                         break;
                     case 2:
                         scanf("%f", floatElm);
                         while(getchar() != '\n');
-                        qEnQueue((void*)&floatElm, queue);
+                        qcEnQueue((void*)&floatElm, cqueue);
                         break;
                 }
                 printf("%s", COLOR_RESET);
@@ -88,14 +88,14 @@ void main(void){
             case 3:
                 colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                 fcprint("Removendo o primeiro da fila!", format, stdColor, jump, 46);
-                answer = *(int *)qDeQueue(queue);
+                answer = *(int *)qcDeQueue(cqueue);
                 printf("%s--- Item removido: ", stdColor);
                 printf("%d |||||\n", answer);
                 printf("%s", COLOR_RESET);
                 colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                 break;
             case 4:
-                intElm = (int *)qFirst(queue);
+                intElm = (int *)qcFirst(cqueue);
                 if (intElm != NULL){
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                     printf("%s--- Resposta: ", stdColor);
@@ -110,7 +110,7 @@ void main(void){
                 }
                 break;
             case 5:
-                if (qIsEmpty(queue) == TRUE){
+                if (qcIsEmpty(cqueue) == TRUE){
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                     fcprint("Está vazia!", format, stdColor, jump, 46);
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
@@ -121,12 +121,12 @@ void main(void){
                 }
                 break;
             case 6:
-                if (qIsEmpty(queue) == FALSE){
+                if (qcIsEmpty(cqueue) == FALSE){
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
                     fcprint("Esvaziando fila...", format, stdColor, jump, 0);
-                    while (qDeQueue(queue) != NULL );
+                    while (qDeQueue(cqueue) != NULL );
                     colorPrintNTimes('-', ROW_LEN, jump, stdColor);
-                    qDestroy(queue);
+                    qcDestroy(cqueue);
                 } else {
                     colorPrintNTimes('-', ROW_LEN, jump, RED);
                     fcprint("Tchau Tchau :(", format, RED, jump, 0);
