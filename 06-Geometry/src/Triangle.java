@@ -1,20 +1,35 @@
-public class Triangle extends GeometricFigure{
+public abstract class Triangle extends GeometricFigure{
 
-    public void Triangle(){
-        super.GeometricFigure();
+    public Triangle(){
+        super();
     }
-    public void Triangle(int numSides, String name){
-        super.GeometricFigure(numSides, name);
+    public Triangle(String name){
+        super(3, name);
     }
-    public void Triangle(int numSides, String name, float[] dimensions){
-        super.GeometricFigure( numSides, name, dimensions );
+    public Triangle(String name, float[] dimensions){
+        super( 3, name );
+        this.setDimensions(dimensions);
+    }
+
+    public Triangle(String name, float a, float b, float c){
+        super( 3, name);
+        this.setDimensions(a, b, c);
     }
 
     @Override
-    public void setNumSides(int numSides) {
-        if (numSides == 2) {
-            super.setNumSides(numSides);
+    public void setDimensions(float[] dimensions) {
+        if (dimensions.length != 3){
+            return;
         }
+        if ( dimensions[0] < dimensions[1] + dimensions[2] &&
+             dimensions[1] < dimensions[0] + dimensions[2] &&
+             dimensions[2] < dimensions[0] + dimensions[1]){
+            super.setDimensions(dimensions);
+        }
+    }
+
+    public void setDimensions(float a, float b, float c) {
+        this.setDimensions(new float[]{a, b, c});
     }
 
     @Override
@@ -22,8 +37,8 @@ public class Triangle extends GeometricFigure{
         float area = 0.0f;
         float s = super.calculateP2() / 2;
 
-        area = s * (float) Math.sqrt( (s - super.getDimensions()[0] ) * ( s - super.getDimensions()[1] ) * ( s - super.getDimensions()[2] ) );
+        area = (float) Math.sqrt( s * (s - super.getDimensions()[0] ) * ( s - super.getDimensions()[1] ) * ( s - super.getDimensions()[2] ) );
 
-        return 0;
+        return area;
     }
 }

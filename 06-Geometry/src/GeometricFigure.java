@@ -3,14 +3,16 @@ public abstract class GeometricFigure implements FiguraPlanar {
     private String name;
     private float[] dimensions;
 
-    public void GeometricFigure(){}
-    public void GeometricFigure(int numSides, String name){
+    public GeometricFigure(){
+        this.dimensions = new float[this.numSides];
+    }
+    public GeometricFigure(int numSides, String name){
         this.setNumSides(numSides);
         this.name = name;
         this.dimensions = new float[this.numSides];
     }
 
-    public void GeometricFigure(int numSides, String name, float[] dimensions){
+    public GeometricFigure(int numSides, String name, float[] dimensions){
         this.setNumSides(numSides);
         this.name = name;
         this.setDimensions(dimensions);
@@ -38,8 +40,8 @@ public abstract class GeometricFigure implements FiguraPlanar {
         this.name = name;
     }
 
-    public void setDimensions(float[] dimensions) {
-        if (dimensions.length == this.numSides) {
+    public void setDimensions(float[] dimensions){
+        if (dimensions.length == this.numSides){
             this.dimensions = dimensions;
         }
     }
