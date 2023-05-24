@@ -23,6 +23,7 @@ public class Escaleno extends Triangle{
             super.setDimensions(dimensions);
             return;
         }
+        System.out.println("Todos os lados de um triângulo escaleno devem ser diferentes!");
     }
 
     public void setDimensions(float a, float b, float c){

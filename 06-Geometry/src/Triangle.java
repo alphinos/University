@@ -3,9 +3,11 @@ public abstract class Triangle extends GeometricFigure{
     public Triangle(){
         super();
     }
+
     public Triangle(String name){
         super(3, name);
     }
+
     public Triangle(String name, float[] dimensions){
         super( 3, name );
         this.setDimensions(dimensions);
@@ -17,8 +19,17 @@ public abstract class Triangle extends GeometricFigure{
     }
 
     @Override
+    public void setNumSides(int numSides) {
+        if (numSides == 3) {
+            super.setNumSides(numSides);
+        }
+        System.out.println("Um triângulo precisa ter três lados!");
+    }
+
+    @Override
     public void setDimensions(float[] dimensions) {
         if (dimensions.length != 3){
+            System.out.println("Um triângulo precisa ter três lados!");
             return;
         }
         if ( dimensions[0] < dimensions[1] + dimensions[2] &&

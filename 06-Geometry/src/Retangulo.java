@@ -20,11 +20,13 @@ public class Retangulo extends  Tetragon{
         // Checagem de igualdade entre lados paralelos e de congruência entre as suas diagonais
         // Lado 0 = cima, lado 1 = direita, lado 2 = baixo, lado 3 = esquerda
         if (dimensions[0] != dimensions[2] || dimensions[1] != dimensions[3]){
+            System.out.println("Os lados opostos de todo retângulo regular devem ser iguais!");
             return;
         }
         double diag1 = Math.sqrt( Math.pow( dimensions[0], 2 ) + Math.pow(dimensions[1], 2) );
         double diag2 = Math.sqrt( Math.pow( dimensions[1], 2 ) + Math.pow(dimensions[2], 2) );
         if (diag1 != diag2){
+            System.out.println("As diagonais de todo retângulo regular devem ser iguais!");
             return;
         }
         super.setDimensions(dimensions);

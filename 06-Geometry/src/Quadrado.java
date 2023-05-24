@@ -1,5 +1,6 @@
 public class Quadrado extends Tetragon{
     public Quadrado() {
+        super();
     }
 
     public Quadrado(String name) {
@@ -29,6 +30,7 @@ public class Quadrado extends Tetragon{
                         dimensions[1] != dimensions[2] || dimensions[1] != dimensions[3] ||
                             dimensions[2] != dimensions[3]
         ){
+            System.out.println("Todos os lados do quadrado devem ser iguais!");
             return;
         }
         super.setDimensions(dimensions);

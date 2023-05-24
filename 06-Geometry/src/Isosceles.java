@@ -23,6 +23,7 @@ public class Isosceles extends Triangle{
             super.setDimensions(dimensions);
             return;
         }
+        System.out.println("Ao menos dois lados de um triângulo isósceles devem ser iguais!");
     }
 
     public void setDimensions(float a, float b, float c){

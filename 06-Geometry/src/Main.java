@@ -20,10 +20,16 @@ public class Main {
 
         for (int i = 0; i < figuras.size(); i++){
             for (int j = i; j < figuras.size(); j++){
+                System.out.println();
+
                 GeometricFigure f1 = figuras.get(i);
                 GeometricFigure f2 = figuras.get(j);
+
+                System.out.println();
+
                 compararPerimetro(f1, f2);
                 compararArea(f1, f2);
+
                 System.out.println();
             }
             System.out.println();

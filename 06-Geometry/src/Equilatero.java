@@ -28,4 +28,16 @@ public class Equilatero extends Triangle {
         }
         super.setDimensions(dimensions);
     }
+
+    public void setDimensions(float a){
+        super.setDimensions(new float[]{a, a, a});
+    }
+
+    public void setDimensions(float a, float b, float c){
+        if (a != b || a != c || b != c){
+            System.out.println("Todos os lados de um triângulo equilátero devem ser iguais!");
+            return;
+        }
+        super.setDimensions(new float[]{a, a, a});
+    }
 }
