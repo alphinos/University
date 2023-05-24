@@ -22,6 +22,7 @@ public abstract class Triangle extends GeometricFigure{
     public void setNumSides(int numSides) {
         if (numSides == 3) {
             super.setNumSides(numSides);
+            return;
         }
         System.out.println("Um triângulo precisa ter três lados!");
     }

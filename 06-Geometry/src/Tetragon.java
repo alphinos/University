@@ -20,6 +20,7 @@ public abstract class Tetragon extends  GeometricFigure {
     public void setNumSides(int numSides) {
         if (numSides == 4) {
             super.setNumSides(numSides);
+            return;
         }
         System.out.println("Um quadrilátero precisa ter quatro lados!");
     }
