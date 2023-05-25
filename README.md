@@ -46,9 +46,14 @@ Just like a journal...
 * The project is composed by the product class, the store class and the seller class.
 * The formatter class is just a helper to print more easily on the screen.
 
-## - [ ] **Exercises with Data Structures** :green_circle:
+## - [ ] **Exercises with Data Structures** :yellow_circle:
+* Basically, it's a compiled of solutions to the activities in the "Estruturas de Dados I"'s subject.
+* In general, these activies are done on paper... That's it.
 
-## - [ ] **Geometry: OOP** :green_circle:
+## - [ ] **Geometry: OOP** :yellow_circle:
+* Just like the Gomes' Stationary project for the "Linguagens de Programação II"'s subject, it's an activity to practice and - actually learn - some other concepts of the OOP paradigm.
+* This ones uses interfaces, abstract classes and a good amount of the basics of geometry.
+* Given the simplicity of this, there are only triangles, rectangles and squares here.
 
 As the license suggests, everything here is on public domain so you can use the code and the art at will.
 Thank you :D
