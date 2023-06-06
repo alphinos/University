@@ -24,7 +24,7 @@
 
 #define COLOR_RESET "\033[0m"
 
-#define ROW_LEN 80
+#define ROW_LEN 134
 #define MARGIN_CHAR '-'
 #define SPACE ' '
 

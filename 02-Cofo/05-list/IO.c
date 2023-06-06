@@ -18,21 +18,19 @@ void colorPrintNTimes( char c, int n, int jump, char color[] ){
         if (color == NULL){
             printNTimes(c, n, jump);
         } else {
-            printf("%s", color);
-            printNTimes(c, n, jump);printNTimes(c, n, jump);
-            printf("%s", COLOR_RESET);
+            for (int i = 0; i < n; i++){
+                printf( "%s%c" COLOR_RESET, color, c);
+            }
+            printf( COLOR_RESET );
         }
-}
+    if (jump == TRUE)
+        printf( COLOR_RESET "\n");
 
-// char **strNTimes(char c, int n){
-//     if (c == NULL) return NULL;
-//     if (n <= 0) return NULL;
-//     char *string = (char *) malloc( sizeof(char) * n );
-//     for (int i = 0; i < n; i++){
-//         string[i] = c;
-//     }
-//     return string;
-// }
+        //     printf(color);
+        //     printNTimes(c, n, FALSE);
+        //     printf( COLOR_RESET );
+        // }
+}
 
 int fcprint( char string[], int alignment, char color[], int jump, int sizeTxt ){
     if (string == NULL)
@@ -51,11 +49,17 @@ int fcprint( char string[], int alignment, char color[], int jump, int sizeTxt )
 
     line->rowLength = ROW_LEN;
 
-    char *auxStr = (char *) malloc( sizeof(char) * (strlen(string) + 2));
+    char *auxStr = (char *) malloc( sizeof(char) * ( 2 * (strlen(string) ) + 1 + 4));
     auxStr[0] = ' ';
+    auxStr[1] = '|';
+    auxStr[2] = ' ';
     auxStr[ strlen(string) + 1 ] = '\0';
     strcat(auxStr, string);
-    strcat(auxStr, " ");
+    for (int i = 0; i < strlen(string); i++){
+        auxStr[ 2*i + 3] = string[i];
+        auxStr[ 2*i + 1 + 3] = ' '; 
+    }
+    strcat(auxStr, "| ");
 
     line->main = auxStr;
 
