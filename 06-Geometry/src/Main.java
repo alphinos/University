@@ -18,8 +18,8 @@ public class Main {
         figuras.add(quadrado);
         figuras.add(retangulo);
 
-        for (int i = 0; i < figuras.size(); i++){
-            for (int j = i; j < figuras.size(); j++){
+        for (int i = 0; i < figuras.size(); i++) {
+            for (int j = i; j < figuras.size(); j++) {
                 System.out.println();
 
                 GeometricFigure f1 = figuras.get(i);
@@ -37,26 +37,26 @@ public class Main {
 
     }
 
-    public static void compararPerimetro(GeometricFigure a, GeometricFigure b){
+    public static void compararPerimetro(GeometricFigure a, GeometricFigure b) {
         System.out.println("Perímetro de " + a.getName() + ": " + a.calculateP2());
         System.out.println("Perímetro de " + b.getName() + ": " + b.calculateP2());
 
-        if (a.calculateP2() > b.calculateP2()){
+        if (a.calculateP2() > b.calculateP2()) {
             System.out.println("A figura de maior perímetro é a: " + a.getName());
-        } else if (b.calculateP2() > a.calculateP2()){
+        } else if (b.calculateP2() > a.calculateP2()) {
             System.out.println("A figura de maior perímetro é a: " + b.getName());
         } else {
             System.out.println("As figuras: " + a.getName() + ", " + b.getName() + " possuem o mesmo perímetro!");
         }
     }
 
-    public static void compararArea(GeometricFigure a, GeometricFigure b){
+    public static void compararArea(GeometricFigure a, GeometricFigure b) {
         System.out.println("Área de " + a.getName() + ": " + a.calculateArea());
         System.out.println("Área de " + b.getName() + ": " + b.calculateArea());
 
-        if (a.calculateArea() > b.calculateArea()){
+        if (a.calculateArea() > b.calculateArea()) {
             System.out.println("A figura de maior área é a: " + a.getName());
-        } else if (b.calculateArea() > a.calculateArea()){
+        } else if (b.calculateArea() > a.calculateArea()) {
             System.out.println("A figura de maior área é a: " + b.getName());
         } else {
             System.out.println("As figuras: " + a.getName() + ", " + b.getName() + " possuem a mesma área!");

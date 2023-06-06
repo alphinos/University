@@ -53,4 +53,12 @@ public abstract class Triangle extends GeometricFigure{
 
         return area;
     }
+
+    public boolean compararArea(GeometricFigure a, GeometricFigure b){
+        return true;
+    }
+
+    public int compararArea(GeometricFigure a, GeometricFigure b, GeometricFigure c){
+        return 1;
+    }
 }
