@@ -12,7 +12,9 @@ int main(){
 
     int nQueens;
 
-    printf( BOLD_RED "Por favor, informe quantas rainhas desejas criar." COLOR_RESET "\n");
+    colorPrintNTimes('-', ROW_LEN, 1, BOLD_RED);
+    printf( BOLD_RED "------------ | Por favor, informe quantas rainhas desejas criar. | -------------" COLOR_RESET "\n");
+    colorPrintNTimes('-', ROW_LEN, 1, BOLD_RED);
 
     printf( BOLD_RED );
     scanf("%d" , &nQueens);
@@ -21,8 +23,14 @@ int main(){
 
     table *tab = createTable(nQueens);
 
-    unsigned long iter = fulfillMap(tab, 0ul);
-    printf( BOLD_RED "Quantidade de iterações: %lu!" COLOR_RESET "\n", iter);
+    unsigned long iter = fulfillMap(tab);
+
+    if ( iter == -1 ){
+        printf( BOLD_RED "Não foi possível resolver o problema das N rainhas!" COLOR_RESET "\n");
+        return 1;
+    }
+
+    printf( BOLD_RED "Quantidade de iterações: %lu." COLOR_RESET "\n", iter);
     printf("\n");
 
     blockStr *bMap = getStrTab( tab );
@@ -42,7 +50,7 @@ int main(){
     end_t = clock();
     total_t = (double) (end_t - start_t) / CLOCKS_PER_SEC;
     printf("\n");
-    printf( BOLD_RED "Tempo total de execução do programa: %f!" COLOR_RESET "\n", total_t);
+    printf( BOLD_RED "Tempo total de execução do programa: %f." COLOR_RESET "\n", total_t);
 
     return 0;
 }

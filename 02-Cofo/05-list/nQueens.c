@@ -57,10 +57,15 @@ int destroyTable( table * tab ){
     return TRUE;
 }
 
-int fulfillMap(table *tab, unsigned long iter){
+unsigned long fulfillMap(table *tab){
     if (tab == NULL){
         return -1;
     }
+    if ( tab->size < 5 ){
+        return -1;
+    }
+
+    unsigned long iter = 0;
 
     int i, j, alocQ;
 

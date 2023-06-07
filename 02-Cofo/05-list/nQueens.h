@@ -24,12 +24,12 @@ typedef struct _blockStr_{
     char **lines;
 } blockStr;
 
+void printTab( table *tab);
 queen * createQueen(int id, int i, int j );
 int destroyQueen(queen * q);
 table * createTable( int n );
 int destroyTable( table * tab );
-int fulfillMap(table *tab, unsigned long iter);
-void printTab( table *tab);
+unsigned long fulfillMap(table *tab);
 
 blockStr * createBlockSTR( int n );
 int destroyBlockSTR( blockStr *block );
@@ -48,7 +48,7 @@ extern queen * createQueen(int id, int i, int j );
 extern int destroyQueen(queen * q);
 extern table * createTable( int n );
 extern int destroyTable( table * tab );
-extern int fulfillMap(table *tab, unsigned long iter);
+extern unsigned long fulfillMap(table *tab);
 extern void printTab( table *tab);
 
 extern blockStr * createBlockSTR( int n );

@@ -130,13 +130,11 @@ int fcprint( char string[], int alignment, char color[], int jump, int sizeTxt )
         printf("%s", COLOR_RESET);
     }
 
-    if (jump == 0){
-        return TRUE;
-    } else if (jump == 1){
+    if (jump == 1){
         printf("\n");
         return TRUE;
     }
-
+    return TRUE;
 }
 
 
