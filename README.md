@@ -49,6 +49,12 @@ Just like a journal...
 * The project is composed by the product class, the store class and the seller class.
 * The formatter class is just a helper to print more easily on the screen.
 
+## - [ ] **SimpleRisc: a simple assembly** :yellow_circle:
+* Simple risc is an assembly with only 21 instructions that is used in the "Arquitetura de Computadores"'s subject.
+* Until now, the only "project" for the subject was to sum two numbers of 256 bits with simple risc and with c.
+* The fun part was to do the sum with c, because with the simpleRisc...
+* It's so simple that it's nearly impossible to do "complex" things
+
 ## - [ ] **Geometry: OOP** :yellow_circle:
 * Just like the Gomes' Stationary project for the "Linguagens de Programação II"'s subject, it's an activity to practice and - actually learn - some other concepts of the OOP paradigm.
 * This ones uses interfaces, abstract classes and a good amount of the basics of geometry.
