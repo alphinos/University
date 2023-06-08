@@ -32,12 +32,15 @@ Just like a journal...
 * There will be different implementations of the "cofo" idea in C for the "Estruturas de Dados I"'s subject.
 * The first implementation of this is basically an integer array.
 * The second one is a generic array that stores the memory adress of the items.
-* The third one is a stack (really interesting).
-* The fourth is a linear queue (really simples).
+* The third one is a stack (so interesting).
+* The fourth is a linear queue (really simple).
 * The fifth one is a circular queue.
 * I'm really happy about the terminal app :D
 * You can see its evolution through each cofo.
 * It has functions to create the cofo, destroy it, insert something on it, remove something and find a specific element on it, and many others that depend on the structure.
+* The sixth is a single linked list. It's kinda simple to use.
+* With it, we have nodes and the proper list. Now we don't have a limit to its extension.
+* The task was to implement something tha resolves the n-queens' problem (it was kinda fun to do).
 
 ## - [ ] **Gomes' Stationary: Object Oriented Programming** :green_circle:
 * The first project that involves java for the "Linguagens de Programação II"'s subject.
@@ -45,10 +48,6 @@ Just like a journal...
 * Here, I am learning properly how to do the things with OOP.
 * The project is composed by the product class, the store class and the seller class.
 * The formatter class is just a helper to print more easily on the screen.
-
-## - [ ] **Exercises with Data Structures** :yellow_circle:
-* Basically, it's a compiled of solutions to the activities in the "Estruturas de Dados I"'s subject.
-* In general, these activies are done on paper... That's it.
 
 ## - [ ] **Geometry: OOP** :yellow_circle:
 * Just like the Gomes' Stationary project for the "Linguagens de Programação II"'s subject, it's an activity to practice and - actually learn - some other concepts of the OOP paradigm.

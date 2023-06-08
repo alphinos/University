@@ -1,5 +1,4 @@
 # Trabalho de implementação TAD
-## Discente: Carlos Eduardo Veras Gomes
 
 - O trabalho foi compilado na distribuição linux Manjaro
 
